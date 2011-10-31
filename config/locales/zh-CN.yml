@@ -1,0 +1,11 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+zh-CN:
+  maitianer: "麦田儿"
+  pages:
+    home: "我的主页"
+    about: "关于我们"
+    contact: "联系方式"
+    service: "服务条款"
+    privacy: "隐私策略"

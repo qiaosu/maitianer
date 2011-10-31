@@ -1,4 +1,10 @@
 Maitianer::Application.routes.draw do
+  match 'about' => 'pages#about'
+  match 'contact' => 'pages#contact'
+  match 'service' => 'pages#service'
+  match 'privacy' => 'pages#privacy'
+  root :to => "pages#home"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
