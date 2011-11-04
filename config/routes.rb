@@ -1,4 +1,6 @@
 Maitianer::Application.routes.draw do
+  devise_for :users, :path => '', :controllers => { :omniauth_callbacks => 'omniauth_callbacks' }
+
   match 'about' => 'pages#about'
   match 'contact' => 'pages#contact'
   match 'service' => 'pages#service'

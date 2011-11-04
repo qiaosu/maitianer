@@ -12,8 +12,14 @@
 			<ul id="right-menu">
 				<li><a href="">邀请</a></li>
 				<li><a href="">手机</a></li>
-				<li><a href="">设置</a></li>
-				<li><a href="">退出</a></li>
+				<% if user_signed_in? %>
+				<li><%= link_to "设置", edit_user_registration_path %></li>
+				<li><%= link_to "退出", destroy_user_session_path %></li>
+				<% else %>
+				
+				<li><%= link_to "登录", new_user_session_path %></li>
+				<% end %>
+				
 			</ul>
 		</div>
 	</div>

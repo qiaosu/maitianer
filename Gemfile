@@ -31,6 +31,8 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'therubyracer'
+gem "oa-oauth", :require => "omniauth/oauth"
+gem 'devise'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
