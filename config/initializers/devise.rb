@@ -198,7 +198,10 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
   config.omniauth :tsina, '2630328884', 'a57cf97e2d2af336ba719b3535d60b37'
-  config.omniauth :renren, '167823', '042b62a3c7be472d97b24495599afb94'
+  config.omniauth :renren_new, '1f13e241785641eab2a636d7bb470c25', '042b62a3c7be472d97b24495599afb94'
+  config.omniauth :douban, '087421da255e8e73195c658e701bab59', '215afd0b422a52cf'
+  config.omniauth :tqq, '801061338', 'f31c244171ebd8a8e813f0d0ae363be6'
+  # config.omniauth :qzone, '32266', '526534ba9842467aa699207f60eb4d47'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

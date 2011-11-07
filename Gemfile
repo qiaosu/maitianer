@@ -36,6 +36,7 @@ gem 'devise'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
+  gem 'nifty-generators'
 end
 
 group :test do
