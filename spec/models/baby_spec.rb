@@ -48,3 +48,17 @@ describe Baby do
 
   
 end
+# == Schema Information
+#
+# Table name: babies
+#
+#  id         :integer         not null, primary key
+#  name       :string(255)
+#  nick_name  :string(255)
+#  birthday   :date
+#  sex        :integer
+#  user_id    :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+

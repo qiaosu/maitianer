@@ -1,4 +1,6 @@
 Maitianer::Application.routes.draw do
+  resources :timelines
+
   resources :babies
 
   devise_for :users, :path => '', 

@@ -1,0 +1,23 @@
+<% @title = "Edit Timeline" %>
+
+<%= form_for @timeline do |f| %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.number_field :status %>
+  </p>
+  <p>
+    <%= f.label :alias %><br />
+    <%= f.text_field :alias %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+
+

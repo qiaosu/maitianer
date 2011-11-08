@@ -27,6 +27,12 @@
     <%= f.label :sex %><br />
     <%= f.number_field :sex %>
   </div>
+  <%= fields_for :timeline do |t| %>
+  <div class="field">
+    <%= t.label :alias %><br />
+    <%= t.text_field :alias %>
+  </div>
+  <% end %>
   <div class="actions">
     <%= f.submit %>
   </div>

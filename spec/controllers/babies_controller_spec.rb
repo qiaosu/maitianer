@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-
-
 describe BabiesController do
   render_views
 

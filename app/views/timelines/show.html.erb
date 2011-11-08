@@ -1,0 +1,30 @@
+<% @title="Timeline" %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @timeline.title %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @timeline.description %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%= @timeline.status %>
+</p>
+<p>
+  <strong>Alias:</strong>
+  <%= @timeline.alias %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%= @timeline.baby.user %>
+</p>
+<p>
+  <strong>Baby:</strong>
+  <%= @timeline.baby %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_timeline_path(@timeline) %> |
+</p>

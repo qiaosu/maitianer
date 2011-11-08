@@ -36,6 +36,7 @@ gem 'devise'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
+  gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
   gem 'nifty-generators'
 end
 
@@ -46,3 +47,4 @@ group :test do
   gem 'spork', '0.9.0.rc9'
 end
 
+gem "mocha", :group => :test

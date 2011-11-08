@@ -16,6 +16,7 @@ class BabiesController < ApplicationController
   # GET /babies/new.json
   def new
     @baby = current_user.babies.new
+    @timeline = Timeline.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -32,7 +33,7 @@ class BabiesController < ApplicationController
   # POST /babies.json
   def create
     @baby = current_user.babies.new(params[:baby])
-
+    @baby.build_timeline({:title => @baby.nick_name, :alias => params[:timeline][:alias], :status => 1, :user => current_user})
     respond_to do |format|
       if @baby.save
         format.html { redirect_to home_path, notice: 'Baby was successfully created.' }
