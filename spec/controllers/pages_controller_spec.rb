@@ -8,15 +8,48 @@ describe PagesController do
   end
 
   describe "GET 'home'" do
-    it "should be successful" do
-      get 'home'
-      response.should be_success
+    describe "when not signed in" do
+      
+      it "should redirect to login" do
+        get 'home'
+        response.should redirect_to(new_user_session_path)
+      end
+      
     end
+    
+    describe "when first signed in" do
+      
+      before(:each) do
+        @user = Factory.create(:user)
+        sign_in @user
+      end
+      
+      it "should redirect to create baby" do
+        get 'home'
+        response.should redirect_to(new_baby_path)
+      end
 
-    it "should have the right title" do
-      get 'home'
-      response.should have_selector("title", :content => I18n.t("pages.home") + " | #{@base_title}")
     end
+    
+    describe "when signed in and baby created" do
+      
+      before(:each) do
+        @user = Factory.create(:user)
+        @baby = Factory.create(:baby, :user => @user)
+        sign_in @user
+      end
+      
+      it "should be success" do
+        get 'home'
+        response.should be_success
+      end
+      
+      it "should have the right title" do
+        get 'home'
+        response.should have_selector("title", :content => I18n.t("pages.home") + " | #{@base_title}")
+      end
+    end
+    
   end
 
   describe "GET 'about'" do

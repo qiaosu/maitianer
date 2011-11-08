@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :babies
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable and :timeoutable
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
@@ -14,5 +16,9 @@ class User < ActiveRecord::Base
     else # Create a user with a stub password. 
       User.new(:email => data["email"], :password => Devise.friendly_token[0,20]) 
     end
+  end
+  
+  def first_baby
+    babies[0]
   end
 end

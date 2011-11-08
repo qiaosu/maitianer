@@ -1,10 +1,16 @@
 Maitianer::Application.routes.draw do
-  devise_for :users, :path => '', :controllers => { :omniauth_callbacks => 'omniauth_callbacks' }
+  resources :babies
+
+  devise_for :users, :path => '', 
+                     :path_names => { :sign_in => 'login', :sign_out => 'logout', :sign_up => 'register' }, 
+                     :controllers => { :omniauth_callbacks => 'omniauth_callbacks' }
 
   match 'about' => 'pages#about'
   match 'contact' => 'pages#contact'
   match 'service' => 'pages#service'
   match 'privacy' => 'pages#privacy'
+  match 'home' => 'pages#home'
+  
   root :to => "pages#home"
 
   # The priority is based upon order of creation:
