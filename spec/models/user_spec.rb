@@ -18,7 +18,7 @@ describe User do
   	no_email_user.should_not be_valid
 	end
 
-	  it "should accept valid email addresses" do
+	it "should accept valid email addresses" do
     addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp]
     addresses.each do |address|
       valid_email_user = User.new(@attr.merge(:email => address))
@@ -95,10 +95,8 @@ describe User do
     it "should set the encrypted password attribute" do
       @user.encrypted_password.should_not be_blank
     end
-
+    
   end
-
-
 end
 # == Schema Information
 #

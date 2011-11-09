@@ -13,20 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20111109061422) do
 
-  create_table "archives", :force => true do |t|
-    t.string   "title"
-    t.string   "content"
-    t.string   "image"
-    t.integer  "status"
-    t.integer  "privacy_strategy"
-    t.integer  "archive_type"
-    t.integer  "timeline_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "archives", ["timeline_id"], :name => "index_archives_on_timeline_id"
-
   create_table "babies", :force => true do |t|
     t.string   "name"
     t.string   "nick_name"
@@ -56,11 +42,13 @@ ActiveRecord::Schema.define(:version => 20111109061422) do
     t.string   "title"
     t.string   "description"
     t.integer  "status"
-    t.string   "alias"
+    t.string   "url_alias"
     t.integer  "baby_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "timelines", ["baby_id"], :name => "index_timelines_on_baby_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                                 :default => "", :null => false

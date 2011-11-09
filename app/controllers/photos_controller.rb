@@ -40,7 +40,8 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @photo = Photo.new(params[:photo])
+    @timeline = Timeline.find(params[:photo][:timeline_id])
+    @photo = @timeline.photos.new(params[:photo])
 
     respond_to do |format|
       if @photo.save

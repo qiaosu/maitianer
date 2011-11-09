@@ -19,6 +19,7 @@ class Photo < ActiveRecord::Base
   belongs_to :timeline
   mount_uploader :image, ImageUploader
   validates :image, :presence => true
+  validates :timeline_id, :presence => true
 end
 # == Schema Information
 #

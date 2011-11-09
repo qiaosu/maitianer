@@ -7,10 +7,12 @@ class Timeline < ActiveRecord::Base
     ["不可用", 2]
   ]
   
-  attr_accessible :title, :description, :alias
+  attr_accessible :title, :description, :status, :alias
   belongs_to :baby
+  has_many :photos
 
   validates :title, :presence => true
+  validates :baby_id, :presence => true
 end
 # == Schema Information
 #
@@ -20,7 +22,7 @@ end
 #  title       :string(255)
 #  description :string(255)
 #  status      :integer
-#  alias       :string(255)
+#  url_alias   :string(255)
 #  baby_id     :integer
 #  created_at  :datetime
 #  updated_at  :datetime
