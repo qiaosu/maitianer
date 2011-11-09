@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111108125514) do
+ActiveRecord::Schema.define(:version => 20111109061422) do
+
+  create_table "archives", :force => true do |t|
+    t.string   "title"
+    t.string   "content"
+    t.string   "image"
+    t.integer  "status"
+    t.integer  "privacy_strategy"
+    t.integer  "archive_type"
+    t.integer  "timeline_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "archives", ["timeline_id"], :name => "index_archives_on_timeline_id"
 
   create_table "babies", :force => true do |t|
     t.string   "name"
@@ -24,6 +38,19 @@ ActiveRecord::Schema.define(:version => 20111108125514) do
   end
 
   add_index "babies", ["user_id"], :name => "index_babies_on_user_id"
+
+  create_table "photos", :force => true do |t|
+    t.string   "title"
+    t.string   "image"
+    t.string   "description"
+    t.integer  "privacy_strategy"
+    t.integer  "status"
+    t.integer  "timeline_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "photos", ["timeline_id"], :name => "index_photos_on_timeline_id"
 
   create_table "timelines", :force => true do |t|
     t.string   "title"

@@ -1,4 +1,12 @@
+# coding: utf-8  
 class Timeline < ActiveRecord::Base
+  
+  #status
+  STATUS = [
+    ["可用", 1],
+    ["不可用", 2]
+  ]
+  
   attr_accessible :title, :description, :alias
   belongs_to :baby
 

@@ -1,4 +1,13 @@
+# coding: utf-8  
 class Baby < ActiveRecord::Base
+  
+  #sex
+  SEX = [
+    ["男", 1],
+    ["女", 2],
+    ["保密", 3]
+  ]
+  
 	attr_accessible :name, :nick_name, :birthday, :sex
   belongs_to :user
   has_one :timeline

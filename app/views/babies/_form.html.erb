@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :sex %><br />
-    <%= f.number_field :sex %>
+    <%= f.select :sex, Baby::SEX %>
   </div>
   <%= fields_for :timeline do |t| %>
   <div class="field">

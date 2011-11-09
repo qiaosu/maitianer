@@ -1,4 +1,6 @@
 Maitianer::Application.routes.draw do
+  resources :photos
+
   resources :timelines
 
   resources :babies

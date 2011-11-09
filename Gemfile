@@ -33,6 +33,10 @@ gem 'jquery-rails'
 gem 'therubyracer'
 gem "oa-oauth", :require => "omniauth/oauth"
 gem 'devise'
+gem 'mini_magick', "~> 3.3"
+gem 'rest-client'
+gem 'carrierwave-upyun', :git => 'https://github.com/nowa/carrierwave-upyun.git', :require => 'carrierwave/upyun'
+gem 'carrierwave'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
@@ -45,6 +49,7 @@ group :test do
   gem 'webrat', '0.7.1'
   gem 'factory_girl_rails', '1.0'
   gem 'spork', '0.9.0.rc9'
+  gem 'mocha', :group => :test
 end
 
-gem "mocha", :group => :test
+
