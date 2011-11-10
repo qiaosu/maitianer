@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Milestone content:</b>
+  <%= @milestone.milestone_content %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @milestone.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_milestone_path(@milestone) %> |
+<%= link_to 'Back', milestones_path %>

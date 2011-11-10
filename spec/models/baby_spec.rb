@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Baby do
   before(:each) do
   	@user = Factory.create(:user)
+  	@baby = Factory(:baby, :user => @user)
   	@attr = {
 	  	:name => "maitianer",
 	  	:nick_name => "XiaoNiZi",
@@ -16,9 +17,6 @@ describe Baby do
   end
 
   describe "user associations" do
-  	before(:each) do
-  	  @baby = @user.babies.create(@attr)
-  	end
 
   	it "should have a user attribute" do
   		@baby.should respond_to(:user)
@@ -28,6 +26,20 @@ describe Baby do
   		@baby.user_id.should == @user.id
   		@baby.user.should == @user
   	end
+  end
+  
+  describe "photos associations" do
+    
+    it "should have a photos attribute" do
+      @baby.should respond_to(:photos)
+    end
+  end
+  
+  describe "milestones associations" do
+    
+    it "should have a milestones attribute" do
+      @baby.should respond_to(:milestones)
+    end
   end
 
   describe "validations" do

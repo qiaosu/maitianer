@@ -1,4 +1,7 @@
 class PhotosController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :authorized_user, :only => [:update, :destroy]
+  
   # GET /photos
   # GET /photos.json
   def index
@@ -40,8 +43,8 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @timeline = Timeline.find(params[:photo][:timeline_id])
-    @photo = @timeline.photos.new(params[:photo])
+    @baby = Baby.find(params[:photo][:baby_id])
+    @photo = @baby.photos.new(params[:photo])
 
     respond_to do |format|
       if @photo.save
@@ -81,4 +84,10 @@ class PhotosController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  private
+    def authorized_user
+      @milestone = current_user.babies.first.milestones.find_by_id(params[:id])
+      redirect_to root_path if @milestone.nil?
+    end
 end

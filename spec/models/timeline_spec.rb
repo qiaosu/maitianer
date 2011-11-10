@@ -12,14 +12,32 @@ describe Timeline do
   it "should create a new instance given valid attributes" do
   	@baby.create_timeline!(@attr)
   end
-
-  it "should require a timeline title" do
-  	@baby.build_timeline(@attr.merge(:title => "")).should_not be_valid
+  
+  describe "baby associations" do
+    before(:each) do
+      @timeline = Factory(:timeline, :baby => @baby)
+    end
+    
+    it "should have a baby attribute" do
+      @timeline.should respond_to(:baby)
+    end
+    
+    it "should have a right association baby" do
+      @timeline.baby_id = @baby_id
+      @timeline.baby = @baby
+    end
   end
 
-  it "should require a baby id" do
-  	Timeline.new(@attr).should_not be_valid
+  describe "validations" do
+    it "should require a timeline title" do
+    	@baby.build_timeline(@attr.merge(:title => "")).should_not be_valid
+    end
+
+    it "should require a baby id" do
+    	Timeline.new(@attr).should_not be_valid
+    end
   end
+  
 end
 # == Schema Information
 #

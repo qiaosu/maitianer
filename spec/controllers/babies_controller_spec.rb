@@ -57,6 +57,7 @@ describe BabiesController do
     end
 
     it "should be success" do
+      get 'edit', :id => @baby
       response.should be_success
     end
   end

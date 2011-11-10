@@ -1,7 +1,4 @@
 class User < ActiveRecord::Base
-  has_many :babies
-  has_many :timelines, :through => :babies
-  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable and :timeoutable
   devise :database_authenticatable, :registerable, :confirmable, :lockable,
@@ -9,6 +6,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  
+  has_many :babies
+  has_many :timelines, :through => :babies
   
   def self.find_for_tsina_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']

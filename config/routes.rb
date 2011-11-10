@@ -1,4 +1,6 @@
 Maitianer::Application.routes.draw do
+  resources :milestones
+
   resources :photos
 
   resources :timelines

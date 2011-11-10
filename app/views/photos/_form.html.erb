@@ -28,8 +28,8 @@
     <%= f.select :privacy_strategy, Photo::PRIVACY_STRATEGY %>
   </div>
   <div class="field">
-    <%= f.label :timeline_id %><br />
-    <%= f.collection_select :timeline_id, current_user.timelines, :id, :title %>
+    <%= f.label :baby_id %><br />
+    <%= f.collection_select :baby_id, current_user.babies, :id, :nick_name %>
   </div>
   <div class="field">
     <%= f.label :status %><br />

@@ -15,7 +15,7 @@ class BabiesController < ApplicationController
   # GET /babies/new
   # GET /babies/new.json
   def new
-    @baby = current_user.babies.new
+    @baby = Baby.new
     @timeline = Timeline.new
 
     respond_to do |format|

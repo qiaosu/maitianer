@@ -1,3 +1,7 @@
+Factory.sequence :email do |n|
+  "person-#{n}@example.com"
+end
+
 FactoryGirl.define do
 	factory :user do
 	  email                 "zhangchao51@163.com"
@@ -28,6 +32,11 @@ FactoryGirl.define do
 		description "Baby Photo Description"
 		privacy_strategy 1
 		status 1
-		association :timeline
+		association :baby
 	end
+	
+	factory :milestone do
+    milestone_content "Milestone content"
+    association :baby
+  end
 end

@@ -1,6 +1,5 @@
 # coding: utf-8  
 class Photo < ActiveRecord::Base
-  attr_accessible :title, :description, :image, :privacy_strategy, :status
   
   #status
   STATUS = [
@@ -16,10 +15,11 @@ class Photo < ActiveRecord::Base
     ["不公开",5]
   ]
   
-  belongs_to :timeline
+  attr_accessible :title, :description, :image, :privacy_strategy, :status
+  belongs_to :baby
   mount_uploader :image, ImageUploader
   validates :image, :presence => true
-  validates :timeline_id, :presence => true
+  validates :baby_id, :presence => true
 end
 # == Schema Information
 #
@@ -31,7 +31,7 @@ end
 #  description      :string(255)
 #  privacy_strategy :integer
 #  status           :integer
-#  timeline_id      :integer
+#  baby_id          :integer
 #  created_at       :datetime
 #  updated_at       :datetime
 #

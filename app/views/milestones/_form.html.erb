@@ -1,0 +1,25 @@
+<%= form_for(@milestone) do |f| %>
+  <% if @milestone.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@milestone.errors.count, "error") %> prohibited this milestone from being saved:</h2>
+
+      <ul>
+      <% @milestone.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :milestone_content %><br />
+    <%= f.text_area :milestone_content %>
+  </div>
+  <div class="field">
+    <%= f.label :baby_id %><br />
+    <%= f.collection_select :baby_id, current_user.babies, :id, :nick_name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

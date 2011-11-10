@@ -10,6 +10,8 @@ class Baby < ActiveRecord::Base
   
 	attr_accessible :name, :nick_name, :birthday, :sex
   belongs_to :user
+  has_many :photos
+  has_many :milestones
   has_one :timeline
 
   validates :nick_name, :presence => true

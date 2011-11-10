@@ -6,10 +6,10 @@ class CreatePhotos < ActiveRecord::Migration
       t.string :description
       t.integer :privacy_strategy
       t.integer :status
-      t.references :timeline
+      t.references :baby
 
       t.timestamps
     end
-    add_index :photos, :timeline_id
+    add_index :photos, :baby_id
   end
 end
