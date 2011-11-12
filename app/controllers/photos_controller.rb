@@ -87,7 +87,7 @@ class PhotosController < ApplicationController
   
   private
     def authorized_user
-      @milestone = current_user.babies.first.milestones.find_by_id(params[:id])
-      redirect_to root_path if @milestone.nil?
+      @photo = current_user.babies.first.photos.find_by_id(params[:id])
+      redirect_to root_path if @photo.nil?
     end
 end
