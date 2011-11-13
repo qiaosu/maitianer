@@ -1,30 +1,19 @@
-<p id="notice"><%= notice %></p>
+<% @title = @baby.nick_name %>
+<% @body_id = "baby_home" %>
 
-<p>
-  <b>Name:</b>
-  <%= @baby.name %>
-</p>
-
-<p>
-  <b>Nick name:</b>
-  <%= @baby.nick_name %>
-</p>
-
-<p>
-  <b>Birthday:</b>
-  <%= @baby.birthday %>
-</p>
-
-<p>
-  <b>Sex:</b>
-  <%= @baby.sex %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @baby.user.email %>
-</p>
-
-
-<%= link_to 'Edit', edit_baby_path(@baby) %> |
-<%= link_to 'Back', babies_path %>
+<div id="container">
+	<div id="left-content">
+		<div id="quick-panel-holder" class="clearfix">
+			<div class="user-avatar">
+				<img src="http://placehold.it/70" />
+				<span><a href="#">修改头像</a></span>
+			</div>
+			<ul class="actions-list">
+				<li><a href="<%= new_baby_photo_path @baby %>" class="moment">宝宝一刻</a></li>
+				<li><a href="<%= new_baby_milestone_path @baby %>" class="milestone">里程碑</a></li>
+				<li><a href="" class="say">说点什么</a></li>
+			</ul>
+		</div>
+	</div>
+	<%= render :partial => "babies/right_column" %>
+</div>

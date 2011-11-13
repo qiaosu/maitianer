@@ -6,4 +6,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.infieldlabel
+//= require jquery.easySlider
 //= require_tree .

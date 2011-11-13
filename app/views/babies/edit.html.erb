@@ -1,6 +1,50 @@
-<h1>Editing baby</h1>
+<% @title = "设置宝宝信息"%>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @baby %> |
-<%= link_to 'Back', babies_path %>
+<div id="container">
+	<div id="left-content" class="round">
+		<div class="content-inner">
+			<div class="setting-header">
+				<h2>设置宝宝信息</h2>
+			</div>
+			<div class="setting-body">
+				<%= form_for @baby, :html => { :class => "form main-form" } do |f| %>
+					<div class="field">
+						<label class="left-column">宝宝名称</label>
+						<div class="input">
+							<%= f.text_field :name, :class => "shadow-input-text" %>
+						</div>
+					</div>
+					<div class="field">
+						<label class="left-column">宝宝昵称</label>
+						<div class="input">
+							<%= f.text_field :nick_name, :class => "shadow-input-text" %>
+						</div>
+					</div>
+					<div class="field">
+						<label class="left-column">宝宝性别</label>
+						<div class="input">
+							<%= f.select :sex, Baby::SEX %>
+						</div>
+					</div>
+					<div class="field">
+						<label class="left-column">宝宝生日</label>
+						<div class="input">
+							<%= f.date_select :birthday %>
+						</div>
+					</div>
+					<div class="field">
+						<label class="left-column">访问地址</label>
+						<div class="input">
+							<%= f.text_field :url_alias, :class => "shadow-input-text" %>
+						</div>
+					</div>
+					<hr />
+					<div class="actions">
+						<input type="submit" class="btn primary large pull-right" value="保存" />
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<%= render :partial => "babies/right_column" %>
+</div>

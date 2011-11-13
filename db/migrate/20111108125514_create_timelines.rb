@@ -4,7 +4,6 @@ class CreateTimelines < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.integer :status
-      t.string :url_alias
       t.references :baby
 
       t.timestamps

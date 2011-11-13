@@ -5,7 +5,8 @@ class MilestonesController < ApplicationController
   # GET /milestones
   # GET /milestones.json
   def index
-    @milestones = Milestone.all
+    @baby = Baby.find(params[:baby_id])
+    @milestones = @baby.milestones
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,6 +28,7 @@ class MilestonesController < ApplicationController
   # GET /milestones/new
   # GET /milestones/new.json
   def new
+    @baby = Baby.find(params[:baby_id])
     @milestone = Milestone.new
 
     respond_to do |format|
@@ -43,7 +45,8 @@ class MilestonesController < ApplicationController
   # POST /milestones
   # POST /milestones.json
   def create
-    @milestone = Milestone.new(params[:milestone])
+    @baby = Baby.find(params[:baby_id])
+    @milestone = @baby.milestones.build(params[:milestone])
 
     respond_to do |format|
       if @milestone.save

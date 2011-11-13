@@ -56,6 +56,7 @@ describe Baby do
 	  it "should require a user id" do
 	  	Baby.new(@attr).should_not be_valid
 	  end
+	  
   end
 
   
@@ -69,6 +70,7 @@ end
 #  nick_name  :string(255)
 #  birthday   :date
 #  sex        :integer
+#  url_alias  :string(255)
 #  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime

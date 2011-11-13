@@ -15,6 +15,7 @@ FactoryGirl.define do
 	  nick_name 						"XiaoNiZi"
 	  birthday 							Date.today - 30.days
 	  sex 									1
+	  url_alias             "demo"
 	  association 					:user
 	end
 
@@ -22,7 +23,6 @@ FactoryGirl.define do
 		title "Baby Timeline"
 		description "Baby Timeline Description"
 		status 1
-		url_alias "demo"
 		association :baby
 	end
 

@@ -1,11 +1,10 @@
 Maitianer::Application.routes.draw do
-  resources :milestones
-
-  resources :photos
-
-  resources :timelines
-
-  resources :babies
+  
+  resources :babies do
+    resources :milestones
+    resources :photos
+    resources :timelines
+  end
 
   devise_for :users, :path => '', 
                      :path_names => { :sign_in => 'login', :sign_out => 'logout', :sign_up => 'register' }, 

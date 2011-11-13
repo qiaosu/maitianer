@@ -1,17 +1,77 @@
-<h2>登录</h2>
+<% @title = "登录" %>
+<% @body_id = "login" %>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+	<div id="mini-header">
+		<div id="header-wrap">
+	  	<h1 class="logo">
+	    	<a href="<%= root_path %>" title="麦田儿">麦田儿</a>
+	  	</h1>
+	  	<h2 class="sub-title">记录与分享孩子的成长历程</h2>
+	  	<h3 class="sub-title-right">每天总有些值得你去<span class="underline">记录</span>和<span class="underline">分享</span>的感动</h3>
+    </div>
+  </div>
+  <div id="mini-container">
+    <div class="photo-box">
+      <ul class="photo-list">
+		<li class="photo-item"><img src="images/photo-demo1.jpg" /></li>
+		<li class="photo-item"><img src="images/photo-demo2.jpg" /></li>
+		<li class="photo-item"><img src="images/photo-demo3.jpg" /></li>
+		<li class="photo-item"><img src="images/photo-demo4.jpg" /></li>
+		<li class="photo-item"><img src="images/photo-demo1.jpg" /></li>
+		<li class="photo-item"><img src="images/photo-demo2.jpg" /></li>
+		<li class="photo-item"><img src="images/photo-demo3.jpg" /></li>
+		<li class="photo-item"><img src="images/photo-demo4.jpg" /></li>
+		<li class="photo-item"><img src="images/photo-demo1.jpg" /></li>
+		<li class="photo-item"><img src="images/photo-demo2.jpg" /></li>
+		<li class="photo-item"><img src="images/photo-demo3.jpg" /></li>
+		<li class="photo-item"><img src="images/photo-demo4.jpg" /></li>
+		<li class="photo-item"><img src="images/photo-demo1.jpg" /></li>
+		<li class="register-item"><a href="<%= new_user_registration_path %>"><span class="big">注册</span><span class="mid">加入我们</span></a></li>
+	  </ul>
+	  <ul class="photo-nav">
+	  </ul>
+    </div>
+	<div class="login-box">
+		<%= display_notice_and_alert %>
+	  <div class="login-holder clearfix">
+	  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	    <div class="field">
+	      <label for="email">邮箱</label>
+		  <div class="input">
+				<%= f.text_field :email, :id => "email", :class => "shadow-input-text", :tabindex => 1 %>
+		  </div>
+		  <label class="remember-me">
+				<%= f.check_box :remember_me, :tabindex => 3 %>
+		  	<span>下次自动登录</span>
+		  </label>
+	    </div>
+	    <div class="field">
+	      <label for="password">密码</label>
+		  <div class="input">
+				<%= f.password_field :password, :id => "password", :class => "shadow-input-text", :tabindex => 2 %>
+		  </div>
+		  <p class="small"><%= link_to "忘记密码？", new_user_password_path %> <%= link_to "没有收到确认邮件？", new_user_confirmation_path %></p>
+	    </div>
+	    <div class="action">
+	  	  <button type="submit" class="btn large primary">立即登录</button>
+	    </div>
+	  <% end %>
+	  </div>
+	  <div class="login-third-holder clearfix">
+	  	<h3>用合作网站帐号登录:</h3>
+		<p>
+			<%- if devise_mapping.omniauthable? %>
+			  <%- resource_class.omniauth_providers.each do |provider| %>
+			    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+			  <% end -%>
+			<% end -%>
+		</p>
+	  </div>	
+	</div>
+  </div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "登录" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+	<script type="text/javascript">
+	$(document).ready(function(){
+	  $("label").inFieldLabels();
+	});
+	</script>

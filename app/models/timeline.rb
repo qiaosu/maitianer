@@ -22,7 +22,6 @@ end
 #  title       :string(255)
 #  description :string(255)
 #  status      :integer
-#  url_alias   :string(255)
 #  baby_id     :integer
 #  created_at  :datetime
 #  updated_at  :datetime

@@ -5,6 +5,7 @@ class CreateBabies < ActiveRecord::Migration
       t.string :nick_name
       t.date :birthday
       t.integer :sex
+      t.string :url_alias
       t.references :user
 
       t.timestamps

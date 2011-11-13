@@ -1,25 +1,38 @@
-<h1>Listing milestones</h1>
+<% @title = "里程碑" %>
+<% @body_id = "list-milestones" %>
 
-<table>
-  <tr>
-    <th>Milestone content</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @milestones.each do |milestone| %>
-  <tr>
-    <td><%= milestone.milestone_content %></td>
-    <td><%= milestone.user %></td>
-    <td><%= link_to 'Show', milestone %></td>
-    <td><%= link_to 'Edit', edit_milestone_path(milestone) %></td>
-    <td><%= link_to 'Destroy', milestone, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Milestone', new_milestone_path %>
+<div id="container">
+	<div id="left-content" class="round">
+		<div class="content-inner clearfix">
+			<div class="content-header">
+				<h2>所有里程碑</h2>
+				<a href="">添加里程碑</a>
+				<div class="search-holder">
+					<form action="" method="post">
+						<input type="text" />
+						<input type="submit" class="btn" value="搜索里程碑" />
+					</form>
+				</div>
+			</div>
+			<table>
+				<thead class="green">
+					<tr>
+						<th>日期</th>
+						<th>里程碑内容</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @milestones.each do |milestone| %>
+					<tr>
+						<td>2011-09-10</td>
+						<td><%= milestone.milestone_content%></td>
+						<td>删除 | 编辑</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<%= render :partial => "babies/right_column" %>
+</div>

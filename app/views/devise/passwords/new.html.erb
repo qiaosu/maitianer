@@ -1,12 +1,31 @@
-<h2>Forgot your password?</h2>
+<% @title = "找回密码" %>
+<% @body_id = "forgot-password" %>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
-
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+<div id="mini-header">
+	<div id="header-wrap">
+	  <h1 class="logo">
+	    <a href="<%= root_path %>" title="麦田儿">麦田儿</a>
+	  </h1>
+	  <h2 class="sub-title">记录与分享孩子的成长历程</h2>
+    </div>
+</div>
+<div id="mini-container">
+	<div id="main">
+		<div class="content-inner">
+			<h4>找回密码</h4>
+			<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+				<%= devise_error_messages! %>
+				<fieldset>
+					<div class="field">
+						<label>请输入您的注册邮箱</label>
+						<div class="input">
+							<%= f.text_field :email, :id => "email", :class => "shadow-input-text", :tabindex => 1 %>
+							<button type="submit" class="btn large primary">发送</button>
+						</div>
+					</div>
+				</fieldset>
+			<% end %>
+			<p></p>
+		</div>
+	</div>
+</div>

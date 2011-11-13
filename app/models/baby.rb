@@ -8,7 +8,7 @@ class Baby < ActiveRecord::Base
     ["保密", 3]
   ]
   
-	attr_accessible :name, :nick_name, :birthday, :sex
+	attr_accessible :name, :nick_name, :birthday, :sex, :url_alias
   belongs_to :user
   has_many :photos
   has_many :milestones
@@ -27,6 +27,7 @@ end
 #  nick_name  :string(255)
 #  birthday   :date
 #  sex        :integer
+#  url_alias  :string(255)
 #  user_id    :integer
 #  created_at :datetime
 #  updated_at :datetime

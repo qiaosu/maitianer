@@ -1,5 +1,64 @@
-<h1>New baby</h1>
+<% @title = "创建宝宝" %>
+<% @body_id = "create-baby" %>
 
-<%= render 'form' %>
-
-<%= link_to 'Back', babies_path %>
+<div id="container">
+	<div id="main">
+		<ul class="headers">
+			<span class="left"><h2>创建宝宝的时间轴</h2></span>
+			<span class="right"><a href="">>>先逛逛</a></span>
+		</ul>
+		<ul id="timeline-guide" class="clearfix">
+			<li class="CBbaby">
+				<div>
+					<h3>记录宝宝的成长</h3>
+					<p>随时随地，发布更方便</p>
+				</div>
+			</li>
+			<li class="CBmilestones">
+				<div>
+					<h3>成长时间轴</h3>
+					<p>专属你宝宝的成长页面</p>
+				</div>
+			</li>
+			<li class="CBshare">
+				<div>
+					<h3>与朋友分享宝宝的成长</h3>
+					<p>圈子、问答</p>
+				</div>
+			</li>
+		</ul>
+		<div id="create-baby-form">
+			<%= form_for(@baby, :html => { :class => "form main-form" }) do |f| %>
+				<fieldset>
+					<div class="field">
+						<label for="baby-name">宝宝昵称</label>
+						<div class="input">
+							<%= f.text_field :nick_name, :class => "shadow-input-text" %><span class="help-inline">这里是提示信息</span>
+						</div>
+					</div>
+					<div class="field">
+						<label for="baby-name">访问地址</label>
+						<div class="input">
+							<%= f.text_field :url_alias, :class => "shadow-input-text" %><span class="help-inline">这里是提示信息</span>
+						</div>
+					</div>
+					<div class="field">
+						<label for="baby-name">宝宝生日</label>
+						<div class="input">
+							<%= f.date_select :birthday %><span class="help-inline">这里是提示信息</span>
+						</div>
+					</div>
+					<div class="field">
+						<label for="baby-name">选择模板</label>
+						<div class="input">
+							<input name="baby-name" type="text" class="shadow-input-text" value="" /><span class="help-inline">这里是提示信息</span>
+						</div>
+					</div>
+					<div class="action">
+						<input type="submit" class="btn large primary pull-right" value="创建时间轴" />
+					</div>
+				</fieldset>
+			<% end %>
+		</div>
+	</div>
+</div>

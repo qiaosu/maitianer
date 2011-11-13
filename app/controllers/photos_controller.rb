@@ -5,7 +5,8 @@ class PhotosController < ApplicationController
   # GET /photos
   # GET /photos.json
   def index
-    @photos = Photo.all
+    @baby = Baby.find(params[:baby_id])
+    @photos = @baby.photos
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,6 +28,7 @@ class PhotosController < ApplicationController
   # GET /photos/new
   # GET /photos/new.json
   def new
+    @baby = Baby.find(params[:baby_id])
     @photo = Photo.new
 
     respond_to do |format|

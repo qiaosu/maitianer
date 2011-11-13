@@ -1,18 +1,75 @@
-<h2>Sign up</h2>
+<% @title = "注册" %>
+<% @body_id = "register" %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<div id="mini-header">
+	<div id="header-wrap">
+	  <h1 class="logo">
+	    <a href="/" title="麦田儿">麦田儿</a>
+	  </h1>
+	  <h2 class="sub-title">记录与分享孩子的成长历程</h2>
+	  <div class="login-button-holder"><span>已经有麦田儿的账号？</span><a href="<%= new_user_session_path %>" title="登录" class="btn">登录</a></div>
+    </div>
+  </div>
+  <div id="container">
+    <div class="sliding-show">
+      <div id="J_Slider">
+      <ul class="sliding-show-list">
+		<li class="sliding-show-item"><img src="images/sliding-demo1.png" /></li>
+		<li class="sliding-show-item"><img src="images/sliding-demo2.png" /></li>
+		<li class="sliding-show-item"><img src="images/sliding-demo1.png" /></li>
+	  </ul>
+	  </div>
+	  <ul id="J_Slider_Control" class="sliding-show-nav">
+	  </ul>
+    </div>
+	<div class="reg-box">
+	  <h2>注册账号</h2>
+	  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+	    <div class="field">
+	      <label for="email">邮箱</label>
+		  <div class="input">
+				<%= f.text_field :email, :id => "email", :class => "shadow-input-text", :tabindex => 1 %>
+		  </div>
+	    </div>
+	    <div class="field">
+	      <label for="password">密码</label>
+		  <div class="input">
+	  	  <%= f.password_field :password, :id => "password", :class => "shadow-input-text", :tabindex => 2 %>
+		  </div>
+	    </div>
+	    <div class="field">
+	      <label for="password_confirmation">确认密码</label>
+		  <div class="input">
+		  	<%= f.password_field :password_confirmation, :id => "password_confirmation", :class => "shadow-input-text", :tabindex => 2 %>
+		  </div>
+	    </div>
+	    <div class="clearfix action">
+	  	  <button type="submit" class="btn primary large">立即注册</button>
+	    </div>
+	  <% end %>
+	  <div class="login-third-holder clearfix">
+	  	<h3>用合作网站帐号注册:</h3>
+		<p>
+		  <%- if devise_mapping.omniauthable? %>
+			  <%- resource_class.omniauth_providers.each do |provider| %>
+			    <%= link_to "Sign in with #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider) %><br />
+			  <% end -%>
+			<% end -%>
+		</p>
+	  </div>	
+	</div>
+  </div>
+	<script type="text/javascript">
+	$(document).ready(function(){
+	  $("label").inFieldLabels();
+	  $("#J_Slider").easySlider({
+		auto: true,
+		continuous: true,
+		numeric: true,
+		numericId: "J_Slider_Control",
+		controlsShow: false,
+		speed: 500
+	  });
+	});
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+	</script>

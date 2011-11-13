@@ -1,0 +1,32 @@
+<div id="right-side">
+	<ul class="side-menu side-box">
+		<li class="first timeline-entry">
+			<a href="">
+				<span class="item-icon homeIcon"></span>
+				<span class="timeline-title">访问<%= @baby.nick_name %>的时间轴</span>
+				<span class="timeline-url">http://<%= @baby.url_alias %>.maitianer.com</span>
+			</a>
+		</li>
+		<li class="sub timeline-customize">
+			<a href=""><span class="item-icon"></span>自定义时间轴样式</a>
+		</li>
+	</ul>
+
+
+	<ul class="side-menu side-box">
+		<li class="first last baby-settings">
+			<a href="<%= edit_baby_path(@baby)%>"><span class="item-icon setIcon"></span>设置宝宝的信息</a>
+		</li>
+	</ul>
+
+	<ul class="side-menu side-box">
+		<li class="first baby-logs current">
+			<span class="menu-item-extra menu-item-number"><%= @baby.photos.count %></span>
+			<a href="<%= baby_photos_path(@baby) %>"><span class="item-icon recordIcon"></span>照片</a>
+		</li>
+		<li class="last baby-milestones">
+			<span class="menu-item-extra menu-item-number"><%= @baby.milestones.count %></span>
+			<a href="<%= baby_milestones_path(@baby) %>"><span class="item-icon milestoneIcon"></span>里程碑</a>
+		</li>
+	</ul>
+</div>
