@@ -2,7 +2,10 @@ Maitianer::Application.routes.draw do
   
   resources :babies do
     resources :milestones
-    resources :photos
+    resources :photos do
+      post 'upload', :on => :collection
+      put 'publish', :on => :member
+    end
     resources :timelines
   end
 

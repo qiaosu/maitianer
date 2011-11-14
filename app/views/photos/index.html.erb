@@ -3,17 +3,7 @@
 
 <div id="container">
 	<div id="left-content">
-		<div id="quick-panel-holder" class="clearfix">
-			<div class="user-avatar">
-				<img src="http://placehold.it/70" />
-				<span><a href="#">修改头像</a></span>
-			</div>
-			<ul class="actions-list">
-				<li><a href="<%= new_baby_photo_path @baby %>" class="moment">宝宝一刻</a></li>
-				<li><a href="" class="milestone">里程碑</a></li>
-				<li><a href="" class="say">说点什么</a></li>
-			</ul>
-		</div>
+		<%= render "babies/quick_panel"%>
 		<div id="feed-list" class="clearfix">
 			<% @baby.photos.each do |photo| %>
 			<div class="feed">
@@ -23,7 +13,7 @@
 							<img class="img-thumb" src="<%= photo.image_url %>" />
 							<div class="text-summary"><p><%= photo.description%></p></div>
 							<div class="feed-date">记录日期：<%= photo.created_at%></div>
-							<div class="feed-act"><a href="">编辑</a> <a href="">删除</a> <a href="">赞(10)</a> <a href="">评论(19)</a></div>
+							<div class="feed-act"><a href="">删除</a> | <a href="">编辑</a></div>
 						</div>
 					</div>
 				</div>

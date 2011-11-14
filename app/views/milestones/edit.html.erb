@@ -1,3 +1,12 @@
-<h1>Editing milestone</h1>
+<% @title = "编辑里程碑"%>
+<% @body_id = "create-milestone" %>
 
+<div id="container">
+	<div id="left-content" class="round">
+		<div class="content-inner clearfix">
+			<h2>创建里程碑</h2>
 <%= render 'form' %>
+		</div>
+	</div>
+	<%= render 'babies/right_column' %>
+</div>

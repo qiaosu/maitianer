@@ -1,12 +1,7 @@
 class PagesController < ApplicationController
-  before_filter :authenticate_user!, :only => :home
   
   def home
     @title = t("pages.home")
-    if current_user.babies.empty?
-      flash.keep
-      redirect_to new_baby_path
-    end
   end
 
   def about

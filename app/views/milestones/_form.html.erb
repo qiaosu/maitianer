@@ -1,25 +1,27 @@
-<%= form_for [@baby, @milestone] do |f| %>
-  <% if @milestone.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@milestone.errors.count, "error") %> prohibited this milestone from being saved:</h2>
-
-      <ul>
-      <% @milestone.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :milestone_content %><br />
-    <%= f.text_area :milestone_content %>
-  </div>
-  <div class="field">
-    <%= f.label :baby_id %><br />
-    <%= f.collection_select :baby_id, current_user.babies, :id, :nick_name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+			<%= form_for [@baby, Milestone.new] do |f| %>
+				<input type="hidden" value="2011-10-10" />
+				<div id="calendar-input" class="calendar-holder">
+				</div>
+				<script>
+					WdatePicker({eCont:'calendar-input',onpicked:function(dp){alert('你选择的日期是:'+dp.cal.getDateStr())}});
+				</script>
+				<div class="inputs-holder">
+					<div class="field">
+						<div class="field-header">
+							<label for="milestone[content]">里程碑内容</label>
+							<div class="share-holder">
+								<input type="checkbox" name="share" id="share-milestone" /> <label for="share-milestone">分享到绑定平台</label>
+							</div>
+						</div>
+						<div class="input">
+							<%= f.text_area :milestone_content, :class => "shadow-input-text" %>
+						</div>
+						<span class="help-block">
+				            <strong>提示:</strong> 这里是提示信息
+				        </span>
+					</div>
+					<div class="actions">
+						<%= f.submit :class => "btn primary large pull-right" %>
+					</div>
+				</div>
+			<% end %>

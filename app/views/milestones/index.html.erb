@@ -2,11 +2,11 @@
 <% @body_id = "list-milestones" %>
 
 <div id="container">
-	<div id="left-content" class="round">
-		<div class="content-inner clearfix">
+	<div id="left-content">
+		<%= render "babies/quick_panel"%>
+		<div class="content-inner clearfix round">
 			<div class="content-header">
 				<h2>所有里程碑</h2>
-				<a href="">添加里程碑</a>
 				<div class="search-holder">
 					<form action="" method="post">
 						<input type="text" />
@@ -27,7 +27,11 @@
 					<tr>
 						<td>2011-09-10</td>
 						<td><%= milestone.milestone_content%></td>
-						<td>删除 | 编辑</td>
+						<td>
+							<%= link_to "删除", baby_milestone_path(@baby, milestone), :confirm => "是否确认删除", :method => :delete %> | 
+							<%= link_to "编辑", edit_baby_milestone_path(@baby, milestone)%>
+							
+						</td>
 					</tr>
 					<% end %>
 				</tbody>

@@ -7,5 +7,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.infieldlabel
+//= require jquery.jqModal
 //= require jquery.easySlider
+//= require swfobject
+//= require jquery.uploadify
 //= require_tree .

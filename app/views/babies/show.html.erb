@@ -3,17 +3,8 @@
 
 <div id="container">
 	<div id="left-content">
-		<div id="quick-panel-holder" class="clearfix">
-			<div class="user-avatar">
-				<img src="http://placehold.it/70" />
-				<span><a href="#">修改头像</a></span>
-			</div>
-			<ul class="actions-list">
-				<li><a href="<%= new_baby_photo_path @baby %>" class="moment">宝宝一刻</a></li>
-				<li><a href="<%= new_baby_milestone_path @baby %>" class="milestone">里程碑</a></li>
-				<li><a href="" class="say">说点什么</a></li>
-			</ul>
-		</div>
+		<%= render "quick_panel"%>
 	</div>
 	<%= render :partial => "babies/right_column" %>
 </div>
+

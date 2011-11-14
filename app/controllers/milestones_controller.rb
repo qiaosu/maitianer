@@ -39,7 +39,8 @@ class MilestonesController < ApplicationController
 
   # GET /milestones/1/edit
   def edit
-    @milestone = Milestone.find(params[:id])
+    @baby = Baby.find(params[:baby_id])
+    @milestone = @baby.milestones.find(params[:id])
   end
 
   # POST /milestones
@@ -50,7 +51,7 @@ class MilestonesController < ApplicationController
 
     respond_to do |format|
       if @milestone.save
-        format.html { redirect_to @milestone, notice: 'Milestone was successfully created.' }
+        format.html { redirect_to baby_milestones_path(@baby), notice: 'Milestone was successfully created.' }
         format.json { render json: @milestone, status: :created, location: @milestone }
       else
         format.html { render action: "new" }
@@ -62,11 +63,12 @@ class MilestonesController < ApplicationController
   # PUT /milestones/1
   # PUT /milestones/1.json
   def update
-    @milestone = Milestone.find(params[:id])
+    @baby = Baby.find(params[:baby_id])
+    @milestone = @baby.milestones.find(params[:id])
 
     respond_to do |format|
       if @milestone.update_attributes(params[:milestone])
-        format.html { redirect_to @milestone, notice: 'Milestone was successfully updated.' }
+        format.html { redirect_to baby_milestones_path(@baby), notice: 'Milestone was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
@@ -78,11 +80,12 @@ class MilestonesController < ApplicationController
   # DELETE /milestones/1
   # DELETE /milestones/1.json
   def destroy
-    @milestone = Milestone.find(params[:id])
+    @baby = Baby.find(params[:baby_id])
+    @milestone = @baby.milestones.find(params[:id])
     @milestone.destroy
 
     respond_to do |format|
-      format.html { redirect_to milestones_url }
+      format.html { redirect_to baby_milestones_url(@baby) }
       format.json { head :ok }
     end
   end

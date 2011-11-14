@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   before_filter :authenticate_user!
   before_filter :authorized_user, :only => [:update, :destroy]
+  skip_before_filter :verify_authenticity_token, :only => [:upload]
   
   # GET /photos
   # GET /photos.json
@@ -36,6 +37,12 @@ class PhotosController < ApplicationController
       format.json { render json: @photo }
     end
   end
+  
+  def upload
+    @baby = Baby.find(params[:baby_id])
+    @photo = @baby.photos.create(params[:photo])
+    render :upload, :layout => false
+  end
 
   # GET /photos/1/edit
   def edit
@@ -45,7 +52,7 @@ class PhotosController < ApplicationController
   # POST /photos
   # POST /photos.json
   def create
-    @baby = Baby.find(params[:photo][:baby_id])
+    @baby = Baby.find(params[:baby_id])
     @photo = @baby.photos.new(params[:photo])
 
     respond_to do |format|
