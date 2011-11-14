@@ -60,6 +60,7 @@
 			'fileDesc'	: 'Image Files',
 			'fileExt'		: '*.jpg;*.jpeg;*.png;*.gif;*.bmp',
 			'sizeLimit'	: 1024 * 1024,
+			'fileDataName' : 'photo[image]',
 			'onError'	: function(event, queueID, fileObj, errorObj){
 				if( errorObj.status == 404 ){
 					alert('上传地址错误，请联系管理员！');
