@@ -35,7 +35,7 @@ class BabiesController < ApplicationController
     @baby.build_timeline({:title => @baby.nick_name, :status => 1, :user => current_user})
     respond_to do |format|
       if @baby.save
-        format.html { redirect_to home_path, notice: 'Baby was successfully created.' }
+        format.html { redirect_to @baby, notice: 'Baby was successfully created.' }
         format.json { render json: @baby, status: :created, location: @baby }
       else
         format.html { render action: "new" }
