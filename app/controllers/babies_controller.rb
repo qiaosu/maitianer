@@ -6,10 +6,7 @@ class BabiesController < ApplicationController
   def show
     @baby = Baby.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @baby }
-    end
+    respond_with @baby
   end
 
   # GET /babies/new
@@ -17,10 +14,7 @@ class BabiesController < ApplicationController
   def new
     @baby = Baby.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @baby }
-    end
+    respond_with @baby
   end
 
   # GET /babies/1/edit
@@ -33,15 +27,9 @@ class BabiesController < ApplicationController
   def create
     @baby = current_user.babies.new(params[:baby])
     @baby.build_timeline({:title => @baby.nick_name, :status => 1, :user => current_user})
-    respond_to do |format|
-      if @baby.save
-        format.html { redirect_to @baby, notice: 'Baby was successfully created.' }
-        format.json { render json: @baby, status: :created, location: @baby }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @baby.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = 'Baby was successfully created.' if @baby.save
+    
+    respond_with @baby, :status => :created
   end
 
   # PUT /babies/1

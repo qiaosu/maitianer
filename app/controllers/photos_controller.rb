@@ -3,39 +3,25 @@ class PhotosController < ApplicationController
   before_filter :authorized_user, :only => [:update, :destroy]
   skip_before_filter :verify_authenticity_token, :only => [:upload]
   
-  # GET /photos
-  # GET /photos.json
   def index
     @baby = Baby.find(params[:baby_id])
     @photos = @baby.photos
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @photos }
-    end
+    respond_with(@baby, @photos)
   end
 
-  # GET /photos/1
-  # GET /photos/1.json
   def show
-    @photo = Photo.find(params[:id])
+    @baby = Baby.find(params[:baby_id])
+    @photo = @baby.photos.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @photo }
-    end
+    respond_with(@baby, @photo)
   end
 
-  # GET /photos/new
-  # GET /photos/new.json
   def new
     @baby = Baby.find(params[:baby_id])
     @photo = Photo.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @photo }
-    end
+    respond_with(@baby, @photo)
   end
   
   def upload
@@ -43,55 +29,41 @@ class PhotosController < ApplicationController
     @photo = @baby.photos.create(params[:photo])
     render :upload, :layout => false
   end
-
-  # GET /photos/1/edit
-  def edit
-    @photo = Photo.find(params[:id])
+  
+  def publish
+    @baby = Baby.find(params[:baby_id])
+    @photo = @baby.photos.find(params[:id])
+    @photo.update_attributes(params[:photo])
+    redirect_to baby_photos_path(@baby)
   end
 
-  # POST /photos
-  # POST /photos.json
+  def edit
+    @baby = Baby.find(params[:baby_id])
+    @photo = @baby.photos.find(params[:id])
+    
+    respond_with(@baby, @photo)
+  end
+
   def create
     @baby = Baby.find(params[:baby_id])
     @photo = @baby.photos.new(params[:photo])
-
-    respond_to do |format|
-      if @photo.save
-        format.html { redirect_to @photo, notice: 'Photo was successfully created.' }
-        format.json { render json: @photo, status: :created, location: @photo }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = 'Photo was successfully created.' if @photo.save
+    
+    respond_with(@baby, @photo)
   end
 
-  # PUT /photos/1
-  # PUT /photos/1.json
   def update
     @photo = Photo.find(params[:id])
-
-    respond_to do |format|
-      if @photo.update_attributes(params[:photo])
-        format.html { redirect_to @photo, notice: 'Photo was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
-    end
+    flash[:notice] = 'Photo was successfully updated.' if @photo.update_attributes(params[:photo])
+    
+    respond_with(@baby, @photo, :location => baby_path(@baby), :head => :ok)
   end
 
-  # DELETE /photos/1
-  # DELETE /photos/1.json
   def destroy
     @photo = Photo.find(params[:id])
     @photo.destroy
 
-    respond_to do |format|
-      format.html { redirect_to photos_url }
-      format.json { head :ok }
-    end
+    respond_with @photo, :location => baby_photos_path
   end
   
   private

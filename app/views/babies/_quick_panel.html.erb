@@ -23,6 +23,9 @@
 	</div>
 </div>
 
+<div id="moment-dialog" class="jqmWindow round" style="display:none;border:none">
+</div>
+
 <script>
 	var openFadeIn=function(hash){ hash.w.fadeIn(); };
 	var closeFadeOut = function(hash){ hash.w.fadeOut('2000',function(){ hash.o.remove(); }); };
@@ -61,29 +64,24 @@
 			'fileExt'		: '*.jpg;*.jpeg;*.png;*.gif;*.bmp',
 			'sizeLimit'	: 1024 * 1024,
 			'fileDataName' : 'photo[image]',
-			'onError'	: function(event, queueID, fileObj, errorObj){
+			onError	: function(event, queueID, fileObj, errorObj){
 				if( errorObj.status == 404 ){
 					alert('上传地址错误，请联系管理员！');
 				} else if( errorObj.status === 'HTTP' ){
 					alert('错误 '+errorObj.type+": "+d.status);
 				}else if( errorObj.type === 'File Size'){
-					alert('图片大小限制为: ' + errorObj.info +' 字节');
+					alert('图片大小限制为: ' + errorObj.info + ' 字节');
 				}else{
-					alert('错误 '+errorObj.type+": "+errorObj.info);
+					alert('错误 '+errorObj.type+": "+ errorObj.info);
 				}
 			},
-			'onSelect' : function(event, data){
-				alert(1);
-				$('#uploadedPhoto').attr('src','${ctx}/images/loading.gif');
-				$('#uploadedPhoto').attr('height','100%');
-				if(!hasBaby){
-					alert('请先注册宝宝');
-					return false;
-				}
+			onSelect : function(event, data){
+				$('#moment-dialog').jqmShow();
+				$('#moment-dialog').append("<img src='/images/loading.gif' />");
 			},
-			'onComplete' : function(event, queueID, fileObj, response, data){
-				alert(2);
-				alert(response);
+			onComplete : function(event, queueID, fileObj, response, data){
+				$('#moment-dialog').html(response);
+				$('#moment-dialog').jqmShow();
 			}
 		});
 	});

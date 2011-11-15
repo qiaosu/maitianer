@@ -11,17 +11,17 @@ describe MilestonesController do
   
   describe "access control" do
     it "should deny access to 'create'" do
-      post :create
+      post :create, :baby_id => @baby
       response.should redirect_to(new_user_session_path)
     end
     
     it "should deny access to 'update'" do
-      put :update, :id => 1
+      put :update, :baby_id => @baby, :id => 1
       response.should redirect_to(new_user_session_path)
     end
     
     it "should deny access to 'destroy'" do
-      delete :destroy, :id => 1
+      delete :destroy, :baby_id => @baby, :id => 1
       response.should redirect_to(new_user_session_path)
     end
   end
@@ -35,7 +35,7 @@ describe MilestonesController do
     describe "failure" do
       it "should not create a milestone" do
         lambda do
-          post :create, :milestone => @attr.merge(:milestone_content => "")
+          post :create, :baby_id => @baby, :milestone => @attr.merge(:milestone_content => "")
         end.should_not change(Milestone, :count)
       end
     end
@@ -43,8 +43,8 @@ describe MilestonesController do
     describe "success" do
       it "should create a milestone" do
         lambda do
-          post :create, :milestone => @attr
-        end.should_not change(Milestone, :count).by(1)
+          post :create, :baby_id => @baby, :milestone => @attr
+        end.should change(Milestone, :count).by(1)
       end
       
       it "should have a flash message" do
@@ -62,7 +62,7 @@ describe MilestonesController do
       end
       
       it "should deny access" do
-        put :update, :id => @milestone
+        put :update, :baby_id => @baby, :id => @milestone
         response.should redirect_to(root_path)
       end
     end
@@ -75,7 +75,7 @@ describe MilestonesController do
       
       it "should update the milestone" do
         new_attr = @attr.merge(:milestone_content => "New content")
-        put :update, :id => @milestone, :milestone => new_attr
+        put :update, :baby_id => @baby, :id => @milestone, :milestone => new_attr
         @milestone.reload
         @milestone.milestone_content.should == new_attr[:milestone_content]
       end
@@ -92,7 +92,7 @@ describe MilestonesController do
       end
       
       it "should deny access" do
-        delete :destroy, :id => @milestone
+        delete :destroy, :baby_id => @baby, :id => @milestone
         response.should redirect_to(root_path)
       end
     end
@@ -104,7 +104,7 @@ describe MilestonesController do
       
       it "should destroy the milestone" do
         lambda do
-          delete :destroy, :id => @milestone
+          delete :destroy, :baby_id => @baby, :id => @milestone
         end.should change(Milestone, :count).by(-1)
       end
     end

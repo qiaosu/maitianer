@@ -1,1 +1,17 @@
-<%=image_tag @photo.image_url %>
+<h2>上传宝宝一刻</h2>
+<p style="text-align:center"><%=image_tag @photo.image_url, :width => 300 %></p>
+<%= form_for [@baby, @photo], :url => publish_baby_photo_path(@baby, @photo) do |f| %>
+<div class="field">
+	<label>照片描述（可选）</label>
+	<div class="input">
+		<%= f.text_field :description, :class => "shadow-input-text", :style => "height:50px;width:590px" %>
+		<label><input type="checkbox" /><span>分享到其他平台</span></label>
+	</div>
+</div>
+
+<div class="action">
+	<input type="submit" class="btn primary large pull-right" value="上传宝宝一刻" /><button class="jqmClose btn pull-right large">关闭</button>
+</div> 
+
+<% end %>
+

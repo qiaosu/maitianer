@@ -13,7 +13,7 @@
 							<img class="img-thumb" src="<%= photo.image_url %>" />
 							<div class="text-summary"><p><%= photo.description%></p></div>
 							<div class="feed-date">记录日期：<%= photo.created_at%></div>
-							<div class="feed-act"><a href="">删除</a> | <a href="">编辑</a></div>
+							<div class="feed-act"><%= link_to "删除", baby_photo_path(@baby, photo), :confirm => "是否确认删除？", :method => :delete %> | <a href="">编辑</a></div>
 						</div>
 					</div>
 				</div>

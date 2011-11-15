@@ -11,17 +11,17 @@ describe PhotosController do
   
   describe "access control" do
     it "should deny access to 'create'" do
-      post :create
+      post :create, :baby_id => @baby
       response.should redirect_to(new_user_session_path)
     end
     
     it "should deny access to 'update'" do
-      put :update, :id => @photo
+      put :update, :baby_id => @baby, :id => @photo
       response.should redirect_to(new_user_session_path)
     end
     
     it "should deny access to 'destroy'" do
-      delete :destroy, :id => @photo
+      delete :destroy, :baby_id => @baby, :id => @photo
       response.should redirect_to(new_user_session_path)
     end
   end
@@ -32,7 +32,7 @@ describe PhotosController do
     end
     
     it "should be success" do
-      get :new
+      get :new, :baby_id => @baby
       response.should be_success
     end
   end
@@ -43,7 +43,7 @@ describe PhotosController do
     end
     
     it "should be success" do
-      get :edit, :id => @photo
+      get :edit, :baby_id => @baby, :id => @photo
       response.should be_success
     end
   end
@@ -57,7 +57,7 @@ describe PhotosController do
     describe "failure" do
       it "should not create a photo" do
         lambda do
-          post :create, :photo => @attr.merge(:image => nil)
+          post :create, :baby_id => @baby, :photo => @attr.merge(:image => nil)
         end.should_not change(Photo, :count)
       end
     end
@@ -65,7 +65,7 @@ describe PhotosController do
     describe "success" do
       it "should create a photo" do
         lambda do
-          post :create, :photo => @attr
+          post :create, :baby_id => @baby, :photo => @attr
         end.should_not change(Photo, :count).by(1)
       end
       
@@ -83,7 +83,7 @@ describe PhotosController do
       end
       
       it "should deny access" do
-        put :update, :id => @photo
+        put :update, :baby_id => @baby, :id => @photo
         response.should redirect_to(root_path)
       end
     end
@@ -96,7 +96,7 @@ describe PhotosController do
 
       it "should update the photo" do
         new_attr = @attr.merge(:title => "New title")
-        put :update, :id => @photo, :photo => new_attr
+        put :update, :baby_id => @baby, :id => @photo, :photo => new_attr
         @photo.reload
         @photo.title.should == new_attr[:title]
       end
@@ -112,7 +112,7 @@ describe PhotosController do
       end
       
       it "should deny access" do
-        delete :destroy, :id => @photo
+        delete :destroy, :baby_id => @baby, :id => @photo
         response.should redirect_to(root_path)
       end
     end
@@ -124,7 +124,7 @@ describe PhotosController do
       
       it "should destroy the milestone" do
         lambda do
-          delete :destroy, :id => @photo
+          delete :destroy, :baby_id => @baby, :id => @photo
         end.should change(Photo, :count).by(-1)
       end
     end

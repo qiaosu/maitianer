@@ -1,4 +1,5 @@
 class TimelinesController < ApplicationController
+  
   def edit
     @timeline = Timeline.find(params[:id])
   end
@@ -15,4 +16,5 @@ class TimelinesController < ApplicationController
   def show
     @timeline = Timeline.find(params[:id])
   end
+  
 end

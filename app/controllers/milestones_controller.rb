@@ -2,8 +2,6 @@ class MilestonesController < ApplicationController
   before_filter :authenticate_user!
   before_filter :authorized_user, :only => [:update, :destroy]
   
-  # GET /milestones
-  # GET /milestones.json
   def index
     @baby = Baby.find(params[:baby_id])
     @milestones = @baby.milestones
@@ -14,8 +12,6 @@ class MilestonesController < ApplicationController
     end
   end
 
-  # GET /milestones/1
-  # GET /milestones/1.json
   def show
     @milestone = Milestone.find(params[:id])
 
@@ -25,8 +21,6 @@ class MilestonesController < ApplicationController
     end
   end
 
-  # GET /milestones/new
-  # GET /milestones/new.json
   def new
     @baby = Baby.find(params[:baby_id])
     @milestone = Milestone.new
@@ -37,14 +31,11 @@ class MilestonesController < ApplicationController
     end
   end
 
-  # GET /milestones/1/edit
   def edit
     @baby = Baby.find(params[:baby_id])
     @milestone = @baby.milestones.find(params[:id])
   end
 
-  # POST /milestones
-  # POST /milestones.json
   def create
     @baby = Baby.find(params[:baby_id])
     @milestone = @baby.milestones.build(params[:milestone])
@@ -60,8 +51,6 @@ class MilestonesController < ApplicationController
     end
   end
 
-  # PUT /milestones/1
-  # PUT /milestones/1.json
   def update
     @baby = Baby.find(params[:baby_id])
     @milestone = @baby.milestones.find(params[:id])
@@ -77,8 +66,6 @@ class MilestonesController < ApplicationController
     end
   end
 
-  # DELETE /milestones/1
-  # DELETE /milestones/1.json
   def destroy
     @baby = Baby.find(params[:baby_id])
     @milestone = @baby.milestones.find(params[:id])
