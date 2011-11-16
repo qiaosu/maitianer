@@ -5,6 +5,12 @@ GIT
     annotate (2.4.1.beta1)
 
 GIT
+  remote: git://github.com/jchunky/table_builder.git
+  revision: 861e57bc1c1cddcf877db950fb400226be15ea71
+  specs:
+    table_builder (0.0.3)
+
+GIT
   remote: https://github.com/nowa/carrierwave-upyun.git
   revision: 9a7339605fbe440b4c16bb58dd72e6f60f909226
   specs:
@@ -218,6 +224,7 @@ DEPENDENCIES
   sass-rails (~> 3.1.4)
   spork (= 0.9.0.rc9)
   sqlite3
+  table_builder (= 0.0.3)!
   therubyracer
   uglifier (>= 1.0.3)
   webrat (= 0.7.1)

@@ -4,6 +4,23 @@
 <div id="container">
 	<div id="left-content">
 		<%= render "quick_panel"%>
+		<div id="calendar">
+			<h2 id="month">
+				<%= link_to "<", :month => (@date.beginning_of_month-1).strftime("%Y-%m") %>
+		    <%=h @date.strftime("%Y年%m月") %>
+		    <%= link_to ">", :month => (@date.end_of_month+1).strftime("%Y-%m") %>
+			</h2>
+			<%= calendar_for(@baby.photos, :year => @date.year, :month => @date.month) do |calendar| %>
+				<%= calendar.head('星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期天') %>
+				<%= calendar.day(:day_method => :created_at) do |date, photos| %>
+			    <%= date.day %>
+			    <%= link_to "upload", "#" if photos.empty? %>
+			    <% photos.each do |photo| %>
+			    	<%= image_tag photo.image_url, :width => 90 %>
+			    <% end %>
+			  <% end %>
+			<% end %>
+		</div>
 	</div>
 	<%= render :partial => "babies/right_column" %>
 </div>
