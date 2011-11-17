@@ -1,7 +1,8 @@
 class TimelinesController < ApplicationController
   
   def edit
-    @timeline = Timeline.find(params[:id])
+    @baby = Baby.find(params[:baby_id])
+    @timeline = @baby.timeline
   end
 
   def update

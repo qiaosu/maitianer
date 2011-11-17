@@ -17,9 +17,14 @@ class Photo < ActiveRecord::Base
   
   attr_accessible :title, :description, :image, :privacy_strategy, :status
   belongs_to :baby
+  
   mount_uploader :image, ImageUploader
+  
   validates :image, :presence => true
   validates :baby_id, :presence => true
+  
+  default_scope :order => 'created_at DESC'
+  scope :published,  where(:status => 2)
 end
 # == Schema Information
 #

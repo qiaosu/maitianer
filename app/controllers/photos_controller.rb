@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
   
   def index
     @baby = Baby.find(params[:baby_id])
-    @photos = @baby.photos
+    @photos = @baby.photos.published
 
     respond_with(@baby, @photos)
   end
@@ -26,14 +26,14 @@ class PhotosController < ApplicationController
   
   def upload
     @baby = Baby.find(params[:baby_id])
-    @photo = @baby.photos.create(params[:photo])
+    @photo = @baby.photos.create(params[:photo].merge(:status => 1))
     render :upload, :layout => false
   end
   
   def publish
     @baby = Baby.find(params[:baby_id])
     @photo = @baby.photos.find(params[:id])
-    @photo.update_attributes(params[:photo])
+    @photo.update_attributes(params[:photo].merge(:status => 2))
     redirect_to baby_photos_path(@baby)
   end
 

@@ -5,7 +5,7 @@
 		</h1>
 		<ul id="nav">
 			<% if user_signed_in? && current_user.first_baby %>
-			<li class="<%= controller?('babies')?'current':'' %>"><%= link_to current_user.first_baby.nick_name, current_user.first_baby %>
+			<li class="<%= controller?('babies') || controller?('photos') || controller?('milestones') ? 'current':'' %>"><%= link_to current_user.first_baby.nick_name, current_user.first_baby %>
 			<% end %>
 			<li><a href="">宝宝秀</a></li>
 			<li><a href="">礼品堂</a></li>

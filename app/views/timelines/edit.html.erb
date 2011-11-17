@@ -1,6 +1,6 @@
-<% @title = "Edit Timeline" %>
+<% @title = "自定义时间轴" %>
 
-<%= form_for @timeline do |f| %>
+<%= form_for [@baby, @baby.timeline] do |f| %>
   <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>

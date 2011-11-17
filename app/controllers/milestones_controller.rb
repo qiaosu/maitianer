@@ -6,10 +6,7 @@ class MilestonesController < ApplicationController
     @baby = Baby.find(params[:baby_id])
     @milestones = @baby.milestones
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @milestones }
-    end
+    respond_with(@baby, @milestones)
   end
 
   def show

@@ -1,11 +1,10 @@
 class BabiesController < ApplicationController
   before_filter :authenticate_user!
 
-  # GET /babies/1
-  # GET /babies/1.json
   def show
     @date = params[:month] ? Date.strptime(params[:month], '%Y-%m') : Date.today
     @baby = Baby.find(params[:id])
+    @photos_per_day = @baby.photos.group("date(created_at)").published.all()
 
     respond_with @baby
   end

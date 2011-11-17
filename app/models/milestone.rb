@@ -5,6 +5,8 @@ class Milestone < ActiveRecord::Base
   
   validates :milestone_content, :presence => true, :length => { :maximum => 200 }
   validates :baby_id, :presence => true
+  
+  default_scope :order => "created_at DESC"
 end
 # == Schema Information
 #
