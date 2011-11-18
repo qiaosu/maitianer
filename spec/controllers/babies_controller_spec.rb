@@ -2,6 +2,12 @@ require 'spec_helper'
 
 describe BabiesController do
   render_views
+    
+  before(:each) do
+    @user = Factory.create(:user)
+    @baby = Factory.create(:baby, :user => @user)
+    @timeline = Factory.create(:timeline, :baby => @baby)
+  end
 
   describe "access control" do
     it "should deny access to 'show'" do
@@ -27,8 +33,6 @@ describe BabiesController do
 
   describe "GET 'show'" do
     before(:each) do
-      @user = Factory.create(:user)
-      @baby = Factory.create(:baby, :user => @user)
       sign_in @user
     end
 
@@ -40,7 +44,6 @@ describe BabiesController do
 
   describe "GET 'new'" do
     before(:each) do
-      @user = Factory.create(:user)
       sign_in @user
     end
 
@@ -51,8 +54,6 @@ describe BabiesController do
 
   describe "GET 'edit'" do
     before(:each) do
-      @user = Factory.create(:user)
-      @baby = Factory.create(:baby, :user => @user)
       sign_in @user
     end
 

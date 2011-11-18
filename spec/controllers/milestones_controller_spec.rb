@@ -6,6 +6,7 @@ describe MilestonesController do
   before(:each) do
     @user = Factory(:user)
     @baby = Factory(:baby, :user => @user)
+    @timeline = Factory(:timeline, :baby => @baby)
     @milestone = Factory(:milestone, :baby => @baby)
   end
   
