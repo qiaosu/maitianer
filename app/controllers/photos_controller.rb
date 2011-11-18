@@ -26,7 +26,9 @@ class PhotosController < ApplicationController
   
   def upload
     @baby = Baby.find(params[:baby_id])
-    @photo = @baby.photos.create(params[:photo].merge(:status => 1))
+    @photo = @baby.photos.build(:status => 1)
+    @photo.image = params[:file]
+    @photo.save
     render :upload, :layout => false
   end
   

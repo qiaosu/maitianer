@@ -116,6 +116,8 @@ GEM
       faraday (~> 0.7.4)
       multi_json (~> 1.0.3)
     orm_adapter (0.0.5)
+    plupload-rails (1.0.3)
+      rails (~> 3.1.0)
     polyglot (0.3.3)
     rack (1.3.5)
     rack-cache (1.1)
@@ -218,6 +220,7 @@ DEPENDENCIES
   mocha
   nifty-generators
   oa-oauth
+  plupload-rails
   rails (= 3.1.1)
   rest-client
   rspec-rails (= 2.6.1)
