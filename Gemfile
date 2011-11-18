@@ -22,7 +22,7 @@ gem 'jquery-rails'
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
@@ -45,7 +45,6 @@ end
 group :development do
   gem 'rspec-rails', '2.6.1'
   gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
-  gem 'nifty-generators'
 end
 
 group :test do
@@ -53,7 +52,7 @@ group :test do
   gem 'webrat', '0.7.1'
   gem 'factory_girl_rails', '~> 1.3'
   gem 'spork', '0.9.0.rc9'
-  gem 'mocha', :group => :test
+  gem 'mocha'
 end
 
 
