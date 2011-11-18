@@ -36,6 +36,7 @@ gem 'devise', '~> 1.4.9'
 gem 'mini_magick', "~> 3.3"
 gem 'carrierwave'
 gem 'table_builder', '0.0.3', :git => 'git://github.com/jchunky/table_builder.git'
+gem 'plupload-rails'
 
 group :production do
   gem 'rest-client'

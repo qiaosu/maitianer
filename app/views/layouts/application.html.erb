@@ -2,11 +2,10 @@
 <html>
 <head>
   <title><%= title %></title>
+  <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
 	<script src="http://my97.gotoip55.com/dp/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
-
-  <%= csrf_meta_tags %>
 </head>
 <body id="<%= body_id %>" class="<%= body_classes.join(' ') %>">
 <%= render "layouts/header" %>
