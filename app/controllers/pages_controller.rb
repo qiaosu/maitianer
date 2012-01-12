@@ -4,7 +4,11 @@ class PagesController < ApplicationController
     @title = t("pages.home")
     flash.keep
     if user_signed_in?
-      redirect_to baby_path(current_user.babies.first)
+      if current_user.babies.count > 0
+        redirect_to baby_path(current_user.babies.first)
+      else
+        redirect_to new_baby_path
+      end
     else
       redirect_to new_user_session_path
     end
