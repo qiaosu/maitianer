@@ -1,5 +1,11 @@
 Maitianer::Application.routes.draw do
   
+  get "sync/start"
+  post "sync/sync_babies"
+  post "sync/sync_photos"
+  post "sync/sync_milestons"
+  get "sync/finish"
+
   resources :babies do
     resources :milestones
     resources :photos do
