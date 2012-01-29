@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114133110) do
+ActiveRecord::Schema.define(:version => 20111110012847) do
 
   create_table "babies", :force => true do |t|
     t.string   "name"
@@ -47,15 +47,6 @@ ActiveRecord::Schema.define(:version => 20120114133110) do
   end
 
   add_index "photos", ["baby_id"], :name => "index_photos_on_baby_id"
-
-  create_table "sync_records", :force => true do |t|
-    t.datetime "started_at"
-    t.datetime "finished_at"
-    t.integer  "user_id"
-    t.string   "user_agent"
-  end
-
-  add_index "sync_records", ["user_id"], :name => "index_sync_records_on_user_id"
 
   create_table "timelines", :force => true do |t|
     t.string   "title"
