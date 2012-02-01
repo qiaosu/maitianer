@@ -32,7 +32,7 @@ listen 8088, :tcp_nopush => true
 timeout 30
 
 # feel free to point this anywhere accessible on the filesystem
-pid "/data/web/cosmo2097/tmp/pids/unicorn-maitianer.pid"
+pid "/data/web/cosmo2097/www.maitianer.com/tmp/pids/unicorn-maitianer.pid"
 
 # By default, the Unicorn logger will write to stderr.
 # Additionally, ome applications/frameworks log to stderr or stdout,
