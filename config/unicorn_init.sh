@@ -6,7 +6,7 @@ set -e
 # Feel free to change any of the following variables for your app:
 TIMEOUT=${TIMEOUT-60}
 APP_ROOT=/data/web/cosmo2097/www.maitianer.com
-PID=$APP_ROOT/tmp/pids/unicorn.pid
+PID=$APP_ROOT/tmp/pids/unicorn-maitianer.pid
 CMD="$APP_ROOT/bin/unicorn -D -c $APP_ROOT/config/unicorn.rb"
 # INIT_CONF=$APP_ROOT/config/init.conf
 action="$1"
