@@ -29,7 +29,7 @@ oldsig () {
 case $action in
 start)
 	sig 0 && echo >&2 "Already running" && exit 0
-	su -c "$CMD" - cosmo2097
+	$CMD
 	;;
 stop)
 	sig QUIT && exit 0
@@ -42,7 +42,7 @@ force-stop)
 restart|reload)
 	sig HUP && echo reloaded OK && exit 0
 	echo >&2 "Couldn't reload, starting '$CMD' instead"
-	su -c "$CMD" - cosmo2097
+	$CMD
 	;;
 upgrade)
 	if sig USR2 && sleep 2 && sig 0 && oldsig QUIT
@@ -62,7 +62,7 @@ upgrade)
 		exit 0
 	fi
 	echo >&2 "Couldn't upgrade, starting '$CMD' instead"
-	su -c "$CMD" - cosmo2097
+	$CMD
 	;;
 reopen-logs)
 	sig USR1
