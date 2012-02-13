@@ -58,7 +58,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     flash[:notice] = 'Photo was successfully updated.' if @photo.update_attributes(params[:photo])
     
-    respond_with(@baby, @photo, :location => baby_path(@baby), :head => :ok)
+    respond_with(@baby, @photo, :head => :ok)
   end
 
   def destroy

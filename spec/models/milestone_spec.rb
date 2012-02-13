@@ -49,6 +49,8 @@ end
 #
 #  id                :integer         not null, primary key
 #  milestone_content :text
+#  record_date       :date
+#  photo_id          :integer
 #  baby_id           :integer
 #  created_at        :datetime
 #  updated_at        :datetime

@@ -4,6 +4,7 @@ class CreatePhotos < ActiveRecord::Migration
       t.string :title
       t.string :image
       t.string :description
+      t.date :record_date
       t.integer :privacy_strategy
       t.integer :status
       t.references :baby

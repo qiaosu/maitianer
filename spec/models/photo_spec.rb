@@ -49,6 +49,7 @@ end
 #  title            :string(255)
 #  image            :string(255)
 #  description      :string(255)
+#  record_date      :date
 #  privacy_strategy :integer
 #  status           :integer
 #  baby_id          :integer

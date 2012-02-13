@@ -35,17 +35,10 @@ class MilestonesController < ApplicationController
 
   def create
     @baby = Baby.find(params[:baby_id])
-    @milestone = @baby.milestones.build(params[:milestone])
+    @milestone = @baby.milestones.new(params[:milestone])
+    flash[:notice] = 'Milestone was successfully created.' if @milestone.save
 
-    respond_to do |format|
-      if @milestone.save
-        format.html { redirect_to baby_milestones_path(@baby), notice: 'Milestone was successfully created.' }
-        format.json { render json: @milestone, status: :created, location: @milestone }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @milestone.errors, status: :unprocessable_entity }
-      end
-    end
+    respond_with(@baby, @milestone)
   end
 
   def update

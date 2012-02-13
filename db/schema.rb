@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(:version => 20111110012847) do
 
   create_table "milestones", :force => true do |t|
     t.text     "milestone_content"
+    t.date     "record_date"
+    t.integer  "photo_id"
     t.integer  "baby_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -39,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20111110012847) do
     t.string   "title"
     t.string   "image"
     t.string   "description"
+    t.date     "record_date"
     t.integer  "privacy_strategy"
     t.integer  "status"
     t.integer  "baby_id"

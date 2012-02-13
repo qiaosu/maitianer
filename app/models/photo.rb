@@ -15,7 +15,7 @@ class Photo < ActiveRecord::Base
     ["不公开",5]
   ]
   
-  attr_accessible :title, :description, :image, :privacy_strategy, :status
+  attr_accessible :title, :description, :record_date, :image, :privacy_strategy, :status
   belongs_to :baby
   
   mount_uploader :image, ImageUploader
@@ -34,6 +34,7 @@ end
 #  title            :string(255)
 #  image            :string(255)
 #  description      :string(255)
+#  record_date      :date
 #  privacy_strategy :integer
 #  status           :integer
 #  baby_id          :integer
